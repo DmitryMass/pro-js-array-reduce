@@ -32,7 +32,6 @@ function filter(array, callback) {
   },[])
   return result;
 
-
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
@@ -42,6 +41,12 @@ function filter(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function some(array, callback) {
+  const result = array.reduce((prev,curr,index,arr) => {
+    if(callback(curr,index,arr)) {
+      return true;
+    } return false;
+  }, []);
+  return result;
 
 }
 
