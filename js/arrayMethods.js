@@ -42,10 +42,12 @@ function filter(array, callback) {
 */
 function some(array, callback) {
   const result = array.reduce((prev,curr,index,arr) => {
-    if(callback(curr,index,arr)) {
-      return true;
-    } return false;
-  }, []);
+    if(!prev) {
+      return callback(curr,index,arr)
+    } 
+      
+    return prev;
+  }, false);
   return result;
 
 }
@@ -57,7 +59,16 @@ function some(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function every(array, callback) {
+  const result = array.reduce((prev,curr,index,arr) => {
+    
+    if(!prev) {
+      return prev;
+    }
+    return callback(curr,index,arr)
 
+  }, true);
+  return result;
+  
 }
 
 // Эту часть не удаляем, она важна для проверки результата
