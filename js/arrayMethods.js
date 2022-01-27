@@ -21,6 +21,17 @@ function map(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function filter(array, callback) {
+  
+  const result = array.reduce ((prev, curr ,index, arr) => {
+     
+    if(callback(curr,index,arr)) {
+      prev.push(curr);
+    }
+    return prev;
+    
+  },[])
+  return result;
+
 
 }
 
