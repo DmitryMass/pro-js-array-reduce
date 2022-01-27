@@ -5,6 +5,12 @@
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function map(array, callback) {
+  const result = array.reduce((prev, curr, index, arr) => {
+    prev.push(callback(curr,index,arr));
+
+    return prev;
+  }, []);
+  return result;
 
 }
 
